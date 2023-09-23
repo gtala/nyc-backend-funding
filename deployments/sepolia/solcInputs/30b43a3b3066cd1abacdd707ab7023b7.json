@@ -1,0 +1,35 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/CampaignContract.sol": {
+      "content": "// SPDX-License-Identifier: UNLICENSED\npragma solidity ^0.8.0;\n\ncontract CampaignContract {\n\n    struct Campaign {\n        address payable owner;\n        uint256 goal;\n        uint256 deadline;\n        uint256 amount;\n        uint256 participants;\n        bool active;\n    }\n\n\n    function create(Campaign memory campaign) public {\n\n    }\n\n\n    function participate(uint256 campaignId) payable public {\n\n    }\n\n\n\n}"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}

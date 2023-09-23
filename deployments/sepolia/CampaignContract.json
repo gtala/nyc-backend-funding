@@ -1,0 +1,99 @@
+{
+  "address": "0xa1dAb305Ae0cD94215961142c4aCCb9570906DFf",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "address payable",
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "goal",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "deadline",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "participants",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "active",
+              "type": "bool"
+            }
+          ],
+          "internalType": "struct CampaignContract.Campaign",
+          "name": "campaign",
+          "type": "tuple"
+        }
+      ],
+      "name": "create",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "campaignId",
+          "type": "uint256"
+        }
+      ],
+      "name": "participate",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0xdd105300a63a2ee4b7fc525d41bd65c2258fd7c8cb0d23b0beeb73bc8ad19409",
+  "receipt": {
+    "to": null,
+    "from": "0x1cDC2A4fF8d374D91a1161C142cc496FBF5547Ec",
+    "contractAddress": "0xa1dAb305Ae0cD94215961142c4aCCb9570906DFf",
+    "transactionIndex": 126,
+    "gasUsed": "131001",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x024cd1f7e6e2306ae9979ac821fb70d2b3db6b0956cbad5de4d13cca50ee4254",
+    "transactionHash": "0xdd105300a63a2ee4b7fc525d41bd65c2258fd7c8cb0d23b0beeb73bc8ad19409",
+    "logs": [],
+    "blockNumber": 4344630,
+    "cumulativeGasUsed": "15102887",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "30b43a3b3066cd1abacdd707ab7023b7",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"components\":[{\"internalType\":\"address payable\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"goal\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"deadline\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"participants\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"active\",\"type\":\"bool\"}],\"internalType\":\"struct CampaignContract.Campaign\",\"name\":\"campaign\",\"type\":\"tuple\"}],\"name\":\"create\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"campaignId\",\"type\":\"uint256\"}],\"name\":\"participate\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/CampaignContract.sol\":\"CampaignContract\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/CampaignContract.sol\":{\"content\":\"// SPDX-License-Identifier: UNLICENSED\\npragma solidity ^0.8.0;\\n\\ncontract CampaignContract {\\n\\n    struct Campaign {\\n        address payable owner;\\n        uint256 goal;\\n        uint256 deadline;\\n        uint256 amount;\\n        uint256 participants;\\n        bool active;\\n    }\\n\\n\\n    function create(Campaign memory campaign) public {\\n\\n    }\\n\\n\\n    function participate(uint256 campaignId) payable public {\\n\\n    }\\n\\n\\n\\n}\",\"keccak256\":\"0x8ab60d40030d172ef7462335113778ad2ddf9dcba272b4e5b0aa8c6cd4a06880\",\"license\":\"UNLICENSED\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b50610168806100206000396000f3fe6080604052600436106100295760003560e01c80631dd4f6fe1461002e578063845c93061461004e575b600080fd5b34801561003a57600080fd5b5061004c610049366004610088565b50565b005b61004c610049366004610119565b80356001600160a01b038116811461007357600080fd5b919050565b8035801515811461007357600080fd5b600060c0828403121561009a57600080fd5b60405160c0810181811067ffffffffffffffff821117156100cb57634e487b7160e01b600052604160045260246000fd5b6040526100d78361005c565b81526020830135602082015260408301356040820152606083013560608201526080830135608082015261010d60a08401610078565b60a08201529392505050565b60006020828403121561012b57600080fd5b503591905056fea26469706673582212206ad888d6129c41239190686573e63f7686143fc8c086acea90129aff58339e3764736f6c63430008130033",
+  "deployedBytecode": "0x6080604052600436106100295760003560e01c80631dd4f6fe1461002e578063845c93061461004e575b600080fd5b34801561003a57600080fd5b5061004c610049366004610088565b50565b005b61004c610049366004610119565b80356001600160a01b038116811461007357600080fd5b919050565b8035801515811461007357600080fd5b600060c0828403121561009a57600080fd5b60405160c0810181811067ffffffffffffffff821117156100cb57634e487b7160e01b600052604160045260246000fd5b6040526100d78361005c565b81526020830135602082015260408301356040820152606083013560608201526080830135608082015261010d60a08401610078565b60a08201529392505050565b60006020828403121561012b57600080fd5b503591905056fea26469706673582212206ad888d6129c41239190686573e63f7686143fc8c086acea90129aff58339e3764736f6c63430008130033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [],
+    "types": null
+  }
+}

@@ -1,1 +1,1 @@
-export const FOUNDS = "Founds";
+export const CampaignContract = "CampaignContract";

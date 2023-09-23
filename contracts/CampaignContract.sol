@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.0;
 
-contract Founds {
+contract CampaignContract {
 
     struct Campaign {
         address payable owner;
@@ -12,17 +12,13 @@ contract Founds {
         bool active;
     }
 
-    constructor(){
+
+    function create(Campaign memory campaign) public {
 
     }
 
 
-    function createCampaign() public {
-
-    }
-
-
-    function participate() payable public {
+    function participate(uint256 campaignId) payable public {
 
     }
 
