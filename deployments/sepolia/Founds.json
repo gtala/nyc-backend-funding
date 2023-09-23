@@ -1,0 +1,60 @@
+{
+  "address": "0x67792363252174cC2E5D3222c42882BCaA9a99E7",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "createCampaign",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "participate",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x09201b13e51b4633fe137d2004fab789b4389439b938a0722391585db3ccfd75",
+  "receipt": {
+    "to": null,
+    "from": "0x1cDC2A4fF8d374D91a1161C142cc496FBF5547Ec",
+    "contractAddress": "0x67792363252174cC2E5D3222c42882BCaA9a99E7",
+    "transactionIndex": 35,
+    "gasUsed": "77201",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0xa9ef042bc6b675a7ea8d4934f4bdea05eebb7155edff7189fb1fc9646026df56",
+    "transactionHash": "0x09201b13e51b4633fe137d2004fab789b4389439b938a0722391585db3ccfd75",
+    "logs": [],
+    "blockNumber": 4344411,
+    "cumulativeGasUsed": "4667749",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "d2bdc62f929b0735bbf776e3e6f44bc5",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"createCampaign\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"participate\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/Founds.sol\":\"Founds\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/Founds.sol\":{\"content\":\"// SPDX-License-Identifier: UNLICENSED\\npragma solidity ^0.8.0;\\n\\ncontract Founds {\\n\\n    struct Campaign {\\n        address payable owner;\\n        uint256 goal;\\n        uint256 deadline;\\n        uint256 amount;\\n        uint256 participants;\\n        bool active;\\n    }\\n\\n    constructor(){\\n\\n    }\\n\\n\\n    function createCampaign() public {\\n\\n    }\\n\\n\\n    function participate() payable public {\\n\\n    }\\n\\n\\n\\n}\",\"keccak256\":\"0x3bc612565a02913cf25bf33ac757031052b1865d423a040bd59530d88e3ba2a4\",\"license\":\"UNLICENSED\"}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50606e80601d6000396000f3fe60806040526004361060265760003560e01c80636201fe6914602b578063d11711a2146036575b600080fd5b348015603657600080fd5b00fea264697066735822122079049ea2ae774bbfba81cd40521b08a4dfe21517c0cdb4026c485905a984bd8064736f6c63430008130033",
+  "deployedBytecode": "0x60806040526004361060265760003560e01c80636201fe6914602b578063d11711a2146036575b600080fd5b348015603657600080fd5b00fea264697066735822122079049ea2ae774bbfba81cd40521b08a4dfe21517c0cdb4026c485905a984bd8064736f6c63430008130033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [],
+    "types": null
+  }
+}
