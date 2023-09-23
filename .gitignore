@@ -10,3 +10,7 @@ cache
 artifacts
 .idea
 yarn-error.log
+
+# Vim
+*.swo
+*.swp
