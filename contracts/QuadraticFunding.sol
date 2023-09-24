@@ -23,7 +23,7 @@ contract QuadraticFunding {
 
     modifier onlyContributor() {
         require(
-            contributorFlags[msg.sender] && CONTRIBUTOR_WHITELIST,
+            (contributorFlags[msg.sender] & CONTRIBUTOR_WHITELIST) != 0x0,
             "Only contributor can call this."
         );
         _;
@@ -55,9 +55,9 @@ contract QuadraticFunding {
         uint256 amount;
     }
 
-    mapping(address => uint) public contributorFlags;
-    uint internal constant CONTRIBUTOR_WHITELIST = 0x1;
-    uint internal constant CONTRIBUTOR_CONTRIBUTED = 0x2;
+    mapping(address => uint128) public contributorFlags;
+    uint128 internal constant CONTRIBUTOR_WHITELIST = 0x1;
+    uint128 internal constant CONTRIBUTOR_CONTRIBUTED = 0x2;
 
     Round public currentRound;
     Project[] projects;
