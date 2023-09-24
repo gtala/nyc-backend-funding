@@ -109,10 +109,11 @@ contract QuadraticFunding {
         payable(msg.sender).transfer(address(this).balance);
     }
 
-    function createProject(string memory _name) external {
+    function createProject(string memory _name) external returns (uint256 projectIndex) {
 //        require(block.timestamp < currentRound.endProjectApplicationDate, "QuadraticFunding: Project application time must be active");
         projects.push(Project(payable(msg.sender), _name, 0, true));
-        projectIndexMap[msg.sender] = projects.length - 1;
+        projectIndex = projects.length - 1;
+        projectIndexMap[msg.sender] = projectIndex;
     }
 
     function whitelistContributor(address contributor) external onlyOwner {
@@ -212,7 +213,5 @@ contract QuadraticFunding {
     //3 month period - Podium Round, perform the same round
       //Straight vote; allocates proportion of votes percentage-based
     //Finally, withdraw staked stake in proportion to voters
-
-    
 
 }
