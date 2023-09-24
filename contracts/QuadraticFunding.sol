@@ -101,7 +101,7 @@ contract QuadraticFunding {
         contributorFlags[msg.sender] |= CONTRIBUTOR_CONTRIBUTED;
     }
 
-    function quadraticFunding() external {
+    function quadraticFunding() external returns (uint[] memory projectFundings){
         require(block.timestamp > currentRound.endRoundDate, "QuadraticFunding: Round has not ended yet");
         //Need to add something here to ensure it can't be called twice, e.g. bool
 
@@ -116,6 +116,7 @@ contract QuadraticFunding {
         for(uint i = 0; i < projects.length; ++i) {
             memblock[i] = (currentRound.matchAmount * memblock[i])/proportionSum;
         }
+        return memblock;
     }
 
     function _quadraticFundingMath(uint pidx) internal view returns (uint) {
