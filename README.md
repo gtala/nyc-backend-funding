@@ -1,4 +1,24 @@
 # Podium
+Using Polygon and Safe, Compound, Next.ID, and IPFS, to help fund and incentivize public goods projects with verifiable results reported via “Proof of Direct Impact Using Metadata” (“PODIUM”), and establishing a link between public goods projects, crowdfunding to fund those projects, and impact focused retrospective funding.
+
+## Inspiration
+The inspiration for Podium emerged from the growing need to address the proof of impact after donations and grants are given to public goods projects and to incentivize funding recipients to follow through and report back on the progress with their public good projects, and then be eligible for retrospective funding
+ 
+**The Problem**
+
+Public goods funding faces the following hurdles:
+1. Donors find it hard to see where their donations are really making an impact: **results feedback is missing**.
+2. **Lack of retrospective funding**: Public good projects find it difficult to access a seamless path to retrospective funding
+With Podium, anyone anywhere can generate proof of their direct impact and share with the community of vested stakeholders. 
+
+## What it does
+**Our Solution:** A dApp that allows users to:
+1. Podium is a dApp that allows users to :
+2. Easy login with Polygon account abstraction and Safe wallet. 
+3. Next.ID to establish credentials with credibility and reduce sybill attacks
+4. Funding pools staked on 1-Inch and Compound.  
+5. After payout from the quadratic funding,, the yield is incentive to report back for the PODIUM round
+6. PODIUM captures on-chain meta data of geographic location, time and date stamp, and Next ID attestation. 
 
 ## Documentation
 
