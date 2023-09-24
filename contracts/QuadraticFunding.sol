@@ -58,10 +58,27 @@ contract QuadraticFunding {
 
     Round public currentRound;
     Project[] projects;
+    mapping(address => uint) projectIndexMap;
 
     address public COMPOUND_COMET_ADDRESS;
     address public ONEINCH_ADDRESS;
     address public WETH_ADDRESS;
+
+    //Podium Round
+    struct PodiumRound {
+        uint256 endRoundDate;
+    }
+    struct PodiumProject {
+        mapping(uint256 => string) ipfsHashes;
+        uint nextIPFSHashID;
+    }
+    //Mapped Project indexes to votes
+    mapping(uint => uint) public podiumVotes;
+
+    //Create PodiumRound(done by owner)
+    //uploadResults(string[] results) (get from msg.sender which we can use projectIndexMap to get the index and then associate that with the ipfsHashes)
+    //distributePodiumPrizes() 0. Pull the total amount of staked ETH from platform, withdraw all from platform, withdraw all from WETH. 1. Calculate all podiumVotes for each project, 2. Calculate the sum of podiumVotes, 3. Calculate each prize winnings by multiplying votes * total prize winnings / sum of podium Votes and distribute that amount
+
 
     constructor(address _compoundCometAddress, address _oneInchAddress, address _wethAddress) {
         COMPOUND_COMET_ADDRESS = _compoundCometAddress;
@@ -96,6 +113,7 @@ contract QuadraticFunding {
     function createProject(string memory _name) external {
 //        require(block.timestamp < currentRound.endProjectApplicationDate, "QuadraticFunding: Project application time must be active");
         projects.push(Project(payable(msg.sender), _name, 0, true));
+        projectIndexMap[msg.sender] = projects.length - 1;
     }
 
     function whitelistContributor(address contributor) external onlyOwner {
@@ -116,14 +134,19 @@ contract QuadraticFunding {
         contributorFlags[msg.sender] |= CONTRIBUTOR_CONTRIBUTED;
     }
 
+    // After this function is called, we should have extra kept in the staking contract
     function quadraticFunding() external {
 //        require(block.timestamp > currentRound.endRoundDate, "QuadraticFunding: Round has not ended yet");
         //Need to add something here to ensure it can't be called twice, e.g. bool
-        Comet c = Comet(COMPOUND_COMET_ADDRESS);
-        uint128 amount = c.collateralBalanceOf(address(this), WETH_ADDRESS);
-        c.withdraw(WETH_ADDRESS, amount);
-        IWETH9 weth = IWETH9(WETH_ADDRESS);
-        weth.withdraw(amount);
+        if(currentRound.platform == StakingPlatform.OneInch) {
+
+        } else if(currentRound.platform == StakingPlatform.Compound) {
+            Comet c = Comet(COMPOUND_COMET_ADDRESS);
+            uint amount = currentRound.matchAmount;
+            c.withdraw(WETH_ADDRESS, amount);
+            IWETH9 weth = IWETH9(WETH_ADDRESS);
+            weth.withdraw(amount);
+        } 
 
         //Used as holding proportions, later transformed into funding amount
         uint[] memory proportions = new uint[](projects.length);
@@ -146,9 +169,11 @@ contract QuadraticFunding {
         return sum * sum;
     }
 
+    
+
     //Projects ended, apply quadratic funding on matching amount
       //Retrieve from 1inch or Compound for payment
-      //Replace in 1inch or Compoud for staking the stake
+      //Replace in 1inch or Compound for staking the stake
     //3 month period - Podium Round, perform the same round
       //Straight vote; allocates proportion of votes percentage-based
     //Finally, withdraw staked stake in proportion to voters
