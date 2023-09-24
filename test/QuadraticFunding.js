@@ -6,8 +6,10 @@ describe("Quadratic Funding Contract", function () {
 
     const QuadraticFunding = await ethers.deployContract("QuadraticFunding", ['0x0000000000000000000000000000000000000000', '0x0000000000000000000000000000000000000000', '0x0000000000000000000000000000000000000000']);
     const MockStaker = await ethers.deployContract("MockStaker", [], { value: ethers.utils.parseEther("10") });
-console.log('A');
 
+    await QuadraticFunding.setMockStaker(MockStaker.address);
+
+    await QuadraticFunding.createRound(0, 0, 0, 2);
     //const ownerBalance = await hardhatToken.balanceOf(owner.address);
     //expect(await hardhatToken.totalSupply()).to.equal(ownerBalance);
   });

@@ -85,6 +85,7 @@ contract QuadraticFunding {
         COMPOUND_COMET_ADDRESS = _compoundCometAddress;
         ONEINCH_ADDRESS = _oneInchAddress;
         WETH_ADDRESS = _wethAddress;
+        owner = msg.sender;
     }
 
     //Just for testing
