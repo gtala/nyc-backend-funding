@@ -1,0 +1,15 @@
+FrontEnd Repository
+https://github.com/gtala/nyc-founding-frontend
+
+For the frontend repository, please follow this link. Here you can find:
+
+Next.ID relations API intregrations
+Safe Account Abstraction integrations
+IPFS integrations
+https://github.com/gtala/nyc-founding-frontend
+
+Next.iD Socoring procedure Podium:
+
+For generating a user score from next.id relation service API: Twitter user with an account at least 1 year old, with at least 10 individual followers, and 5 posts Lens account at least 6 months old ENS name with at least 10 transactions twitter account gets a weight of 15 out of 100 lens account gets a weight of 25 ENS name gets a weight of 10 Any account with more than 30 points can begin donating and voting
+
+https://github.com/gtala/nyc-founding-frontend/blob/2a7f472625cc997f5517e7e88ee940eeda2f5069/src/subgraphs/client.ts#L4C1-L5C1
