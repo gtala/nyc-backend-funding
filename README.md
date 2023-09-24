@@ -1,5 +1,23 @@
 # FrontEnd Repository
+
+For the frontend repository, please follow this link. Here you can find: 
+-  Next.ID relations API intregrations
+-  Safe Account Abstraction integrations
+-  IPFS integrations
+
 https://github.com/gtala/nyc-founding-frontend
+
+
+Next.iD Socoring procedure Podium: 
+
+For generating a user score from next.id relation service API:
+Twitter user with an account at least 1 year old, with at least 10 individual followers, and 5 posts
+Lens account at least 6 months old
+ENS name with at least 10 transactions
+twitter account gets a weight of 15 out of 100
+lens account gets a weight of 25
+ENS name gets a weight of 10 
+Any account with more than 30 points can begin donating and voting
 
 # Podium
 Using Polygon and Safe, Compound, Next.ID, and IPFS, to help fund and incentivize public goods projects with verifiable results reported via “Proof of Direct Impact Using Metadata” (“PODIUM”), and establishing a link between public goods projects, crowdfunding to fund those projects, and impact focused retrospective funding.
