@@ -1,19 +1,19 @@
 const { expect } = require("chai");
 
 describe("Quadratic Funding Contract", function () {
-  it("Deployment should assign the total supply of tokens to the owner", async function () {
+  it("Deployment should work in full cycle", async function () {
     const [owner] = await ethers.getSigners();
 
-    const QuadraticFunding = await ethers.deployContract("QuadraticFunding", []);
+    const QuadraticFunding = await ethers.deployContract("QuadraticFunding", ['0x0000000000000000000000000000000000000000', '0x0000000000000000000000000000000000000000', '0x0000000000000000000000000000000000000000']);
+    const MockStaker = await ethers.deployContract("MockStaker", [], { value: ethers.utils.parseEther("10") });
+console.log('A');
 
-    const ownerBalance = await hardhatToken.balanceOf(owner.address);
-    expect(await hardhatToken.totalSupply()).to.equal(ownerBalance);
+    //const ownerBalance = await hardhatToken.balanceOf(owner.address);
+    //expect(await hardhatToken.totalSupply()).to.equal(ownerBalance);
   });
 });
 
 /*
- *
- *
  1. `constructor(address _compoundCometAddress, address _oneInchAddress, address _wethAddress)`
 * Deploy the `QuadraticFunding.sol` contract with the addresses of Compound's Comet contract, the 1Inch Contract (0x0 is fine here for now), and the WETH9 contract, all as deployed on the relevant network.
 

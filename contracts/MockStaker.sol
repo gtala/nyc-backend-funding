@@ -4,8 +4,8 @@ contract MockStaker {
 
     uint256 public balance;
     uint256 public staked;
-    constructor(uint256 _balance) payable {
-        balance = _balance;
+    constructor() payable {
+        balance = msg.value;
     }
 
     function stake() public payable {
