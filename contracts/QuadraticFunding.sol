@@ -93,8 +93,14 @@ contract QuadraticFunding {
     function contribute(uint256 projectIndex) external payable onlyContributor {
         require(block.timestamp > currentRound.startRoundDate, "QuadraticFunding: Round must be active");
         require(block.timestamp < currentRound.endRoundDate, "QuadraticFunding: Round cannot be expired");
+        require((contributorFlags[msg.sender] & CONTRIBUTOR_CONTRIBUTED) != 0, "QuadraticFunding: Contributer already submitted contribution");
 
         contributions[projectIndex][nextContributionID++] = Contribution(msg.sender, msg.value);
+        contributorFlags[msg.sender] |= CONTRIBUTOR_CONTRIBUTED;
+    }
+
+    function quadraticFunding() external {
+        
     }
 
     
