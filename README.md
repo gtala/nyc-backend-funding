@@ -26,7 +26,17 @@
 
 ### Podium Round
 
-1. 
+1. `function createPodiumRound(uint _endRoundDate) public onlyOwner;`
+* Create the podium round, supplying a timestamp for the end. This must take place after the initial round has concluded (e.g. after calling `quadraticFunding()`).
+
+2. `function uploadResults(string[] memory _ipfsHashes) public;`
+* Now that the Podium round has begun, projects can begin to upload their results via an array of IPFS hashes. Each IPFS hash will be recorded within the smart contract and mapped to the project, assuming the `msg.sender` is a project.
+
+3. `function podiumVote(uint projectIndex) public;`
+* Contributors can now vote on a project once by passing the index of the project they would like to vote for.
+
+4. `function distributePodiumPrizes() public;`
+* After the voting has concluded with the end of the Podium round, calling this function will withdraw all staked assets and will distribute them proportional to the number of votes each project received.
 
 ## Building, Testing, Deploying
 ```
