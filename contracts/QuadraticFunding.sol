@@ -101,22 +101,21 @@ contract QuadraticFunding {
         contributorFlags[msg.sender] |= CONTRIBUTOR_CONTRIBUTED;
     }
 
-    function quadraticFunding() external returns (uint[] memory projectFundings){
+    function quadraticFunding() external {
         require(block.timestamp > currentRound.endRoundDate, "QuadraticFunding: Round has not ended yet");
         //Need to add something here to ensure it can't be called twice, e.g. bool
 
         //Used as holding proportions, later transformed into funding amount
-        uint[] memory memblock = new uint[](projects.length);
+        uint[] memory proportions = new uint[](projects.length);
         uint proportionSum = 0;
         for(uint i = 0; i < projects.length; ++i) {
-            memblock[i] = _quadraticFundingMath(i);
-            proportionSum += memblock[i];
+            proportions[i] = _quadraticFundingMath(i);
+            proportionSum += proportions[i];
         }
-        //Finally, calculate funding amounts
+        //Finally, calculate funding amounts and distribute
         for(uint i = 0; i < projects.length; ++i) {
-            memblock[i] = (currentRound.matchAmount * memblock[i])/proportionSum;
+            projects[i].owner.transfer((currentRound.matchAmount * proportions[i])/proportionSum);
         }
-        return memblock;
     }
 
     function _quadraticFundingMath(uint pidx) internal view returns (uint) {
