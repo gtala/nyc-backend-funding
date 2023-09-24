@@ -68,17 +68,16 @@ contract QuadraticFunding {
     struct PodiumRound {
         uint256 endRoundDate;
     }
-    struct PodiumProject {
-        mapping(uint256 => string) ipfsHashes;
-        uint nextIPFSHashID;
-    }
+
+    //Project index => 
+    //Replace string[20] with mapping(uint => string) if needed, then make mapping for
+    mapping(uint256 => mapping(uint => string)) public projectIPFSHashes;
+    //project index => nextIPFSHashID
+    mapping(uint256 => uint256) public projectNextIPFSHashIDs;
+    
+    PodiumRound currentPodiumRound;
     //Mapped Project indexes to votes
     mapping(uint => uint) public podiumVotes;
-
-    //Create PodiumRound(done by owner)
-    //uploadResults(string[] results) (get from msg.sender which we can use projectIndexMap to get the index and then associate that with the ipfsHashes)
-    //distributePodiumPrizes() 0. Pull the total amount of staked ETH from platform, withdraw all from platform, withdraw all from WETH. 1. Calculate all podiumVotes for each project, 2. Calculate the sum of podiumVotes, 3. Calculate each prize winnings by multiplying votes * total prize winnings / sum of podium Votes and distribute that amount
-
 
     constructor(address _compoundCometAddress, address _oneInchAddress, address _wethAddress) {
         COMPOUND_COMET_ADDRESS = _compoundCometAddress;
@@ -169,7 +168,43 @@ contract QuadraticFunding {
         return sum * sum;
     }
 
-    
+    //Create PodiumRound(done by owner)
+    //uploadResults(string[] results) (get from msg.sender which we can use projectIndexMap to get the index and then associate that with the ipfsHashes)
+
+    function createPodiumRound(uint _endRoundDate) public onlyOwner {
+        currentPodiumRound = PodiumRound(_endRoundDate);
+    }
+
+    function uploadResults(string[] memory _ipfsHashes) public {
+        uint projectIndex = projectIndexMap[msg.sender];
+        for(uint i = 0; i < _ipfsHashes.length; ++i) {
+            projectIPFSHashes[projectIndex][projectNextIPFSHashIDs[projectIndex]++] = _ipfsHashes[i];
+        }
+    }
+
+    function podiumVote(uint projectIndex) public {
+        ++podiumVotes[projectIndex];
+    }
+
+    //distributePodiumPrizes() 0. Pull the total amount of staked ETH from platform, withdraw all from platform, withdraw all from WETH. 1. Calculate all podiumVotes for each project, 2. Calculate the sum of podiumVotes, 3. Calculate each prize winnings by multiplying votes * total prize winnings / sum of podium Votes and distribute that amount
+    function distributePodiumPrizes() public {
+        uint128 amount;
+        if(currentRound.platform == StakingPlatform.OneInch) {
+        
+        } else if(currentRound.platform == StakingPlatform.Compound) {
+            Comet c = Comet(COMPOUND_COMET_ADDRESS);
+            amount = c.collateralBalanceOf(address(this), WETH_ADDRESS);
+            Comet(COMPOUND_COMET_ADDRESS).withdraw(WETH_ADDRESS, amount);
+        }
+        uint sumPodiumVotes = 0;
+        for(uint i = 0; i < projects.length; ++i) {
+            sumPodiumVotes += podiumVotes[i];
+        }
+
+        for(uint i = 0; i < projects.length; ++i) {
+            projects[i].owner.transfer((podiumVotes[i] * amount)/sumPodiumVotes);
+        }
+    }
 
     //Projects ended, apply quadratic funding on matching amount
       //Retrieve from 1inch or Compound for payment
