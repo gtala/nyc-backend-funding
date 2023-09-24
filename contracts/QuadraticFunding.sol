@@ -1,4 +1,6 @@
 // SPDX-License-Identifier: UNLICENSED
+import "./Babylonian.sol";
+
 pragma solidity ^0.8.0;
 
 contract QuadraticFunding {
@@ -100,9 +102,28 @@ contract QuadraticFunding {
     }
 
     function quadraticFunding() external {
-        
+        require(block.timestamp > currentRound.endRoundDate, "QuadraticFunding: Round has not ended yet");
+        //Need to add something here to ensure it can't be called twice, e.g. bool
+
+        //Used as holding proportions, later transformed into funding amount
+        uint[] memory memblock = new uint[](projects.length);
+        uint proportionSum = 0;
+        for(uint i = 0; i < projects.length; ++i) {
+            memblock[i] = _quadraticFundingMath(i);
+            proportionSum += memblock[i];
+        }
+        //Finally, calculate funding amounts
+        for(uint i = 0; i < projects.length; ++i) {
+            memblock[i] = (currentRound.matchAmount * memblock[i])/proportionSum;
+        }
     }
 
-    
+    function _quadraticFundingMath(uint pidx) internal view returns (uint) {
+        uint sum = 0;
+        for(uint i = 0; i < nextContributionID; ++i) {
+            sum += Babylonian.sqrt(contributions[pidx][i].amount);
+        }
+        return sum * sum;
+    }
 
 }
